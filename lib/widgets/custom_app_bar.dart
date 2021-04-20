@@ -3,9 +3,9 @@ import 'package:noname/screens/screens.dart';
 import 'package:noname/screens/settings.dart';
 import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
+import 'package:noname/screens/movie_search_screen.dart';
 
 class CustomAppBar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,20 +17,25 @@ class CustomAppBar extends StatelessWidget {
       color: Color(0xff151c26),
       child: Row(
         children: [
-          Image.asset('assets/tr_moovy_logo2.gif', height: 50,),
-          const SizedBox(width: 12.0,),
+          Image.asset(
+            'assets/tr_moovy_logo2.gif',
+            height: 50,
+          ),
+          const SizedBox(
+            width: 12.0,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _AppBarButton(
-                  title: 'Moovies',
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => Home()))),
+                    title: 'Moovies',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => Home()))),
                 _AppBarButton(
-                  title: 'My List',
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MovieList()))),
+                    title: 'My List',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => MovieList()))),
                 IconButton(
                   icon: Icon(
                     Icons.settings,
@@ -39,6 +44,17 @@ class CustomAppBar extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) => SettingsPage()));
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => MovieSearchScreen(),
+                    ));
                   },
                 ),
               ],
@@ -66,9 +82,7 @@ class _AppBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: SecondaryText(
-        text: title
-      ),
+      child: SecondaryText(text: title),
     );
   }
 }

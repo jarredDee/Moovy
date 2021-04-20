@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:noname/widgets/widgets.dart';
 import '../services/movie_service.dart';
 import 'package:noname/theme.dart';
+import 'package:noname/screens/movie_search_screen.dart';
 
 final moviesFutureProvider =
     FutureProvider.autoDispose<Map<String, List>>((ref) async {
@@ -52,7 +53,9 @@ class Home extends ConsumerWidget {
                   child: ContentHeader(featuredContent: movies['featured']),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(height: 12.0,),
+                  child: SizedBox(
+                    height: 12.0,
+                  ),
                 ),
                 SliverToBoxAdapter(
                   child: ContentList(
