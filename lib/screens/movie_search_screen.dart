@@ -38,7 +38,7 @@ class _ExamplePageState extends State<ExamplePage> {
   List names = new List();
   List filteredNames = new List();
   Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Search Example');
+  Widget _appBarTitle = new Text('Search Moovies');
 
   _ExamplePageState() {
     _filter.addListener(() {
@@ -64,6 +64,7 @@ class _ExamplePageState extends State<ExamplePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildBar(context),
+      backgroundColor: Color(0xff151c26),
       body: Container(
         child: _buildList(),
       ),
@@ -98,7 +99,10 @@ class _ExamplePageState extends State<ExamplePage> {
       itemCount: names == null ? 0 : filteredNames.length,
       itemBuilder: (BuildContext context, int index) {
         return new ListTile(
-          title: Text(filteredNames[index].title),
+          title: Text(
+            filteredNames[index].title,
+            style: TextStyle(color: Colors.white),
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -124,7 +128,7 @@ class _ExamplePageState extends State<ExamplePage> {
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
-        this._appBarTitle = new Text('Search Example');
+        this._appBarTitle = new Text('Search Moovies');
         filteredNames = names;
         _filter.clear();
       }
